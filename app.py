@@ -43,9 +43,13 @@ def transcribe_yt():
     response = requests.post('https://api.assemblyai.com/v2/upload',
                             headers=headers,
                             data=read_file(filename))
+    os.remove(mp4_file)
     audio_url = response.json()['upload_url']
+    
     #st.info('3. YouTube audio file has been uploaded to AssemblyAI')
     bar.progress(30)
+
+    
 
     # 4. Transcribe uploaded audio file
     endpoint = "https://api.assemblyai.com/v2/transcript"
@@ -114,7 +118,7 @@ def transcribe_yt():
 # The App
 
 # 1. Read API from text file
-api_key = st.secrets['api_key']
+api_key = '4414c3604f8b484b8d4767f9335d88b8'
 
 #st.info('1. API is read ...')
 st.warning('Awaiting URL input in the sidebar.')

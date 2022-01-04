@@ -26,7 +26,7 @@ current_dir = os.getcwd()
 for file in os.listdir(current_dir):
     if file.endswith(".mp4"):
         mp4_file = os.path.join(current_dir, file)
-        #print(mp4_file)
+        print(mp4_file)
 
 print('2. Audio file has been retrieved from YouTube video')
 
@@ -53,6 +53,7 @@ response = requests.post('https://api.assemblyai.com/v2/upload',
 
 audio_url = response.json()['upload_url']
 
+os.remove(mp4_file)
 print('3. YouTube audio file has been uploaded to AssemblyAI')
 
 
